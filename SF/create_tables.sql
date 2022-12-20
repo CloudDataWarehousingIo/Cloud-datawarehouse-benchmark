@@ -34,8 +34,8 @@ create or replace table call_center
     cc_gmt_offset             decimal(5,2)                  ,
     cc_tax_percentage         decimal(5,2)                   
 ) 
+CLUSTER BY(cc_call_center_sk);
 
- CLUSTER BY(cc_call_center_sk);
 create or replace table catalog_page 
 (
     cp_catalog_page_sk        int                           ,
@@ -48,8 +48,8 @@ create or replace table catalog_page
     cp_description            varchar(100)                  ,
     cp_type                   varchar(100)                   
 ) 
+CLUSTER BY(cp_catalog_page_sk);
 
- CLUSTER BY(cp_catalog_page_sk);
 create or replace table catalog_returns 
 (
     cr_returned_date_sk       int                           ,
@@ -80,8 +80,8 @@ create or replace table catalog_returns
     cr_store_credit           decimal(7,2)                  ,
     cr_net_loss               decimal(7,2)                   
 ) 
+CLUSTER BY(cr_returned_date_sk, cr_item_sk);
 
- CLUSTER BY(cr_returned_date_sk, cr_item_sk);
 create or replace table catalog_sales 
 (
     cs_sold_date_sk           int                           ,
@@ -119,8 +119,8 @@ create or replace table catalog_sales
     cs_net_paid_inc_ship_tax  decimal(7,2)                  ,
     cs_net_profit             decimal(7,2)                   
 ) 
+CLUSTER BY(cs_sold_date_sk, cs_item_sk);
 
- CLUSTER BY(cs_sold_date_sk, cs_item_sk);
 create or replace table customer 
 (
     c_customer_sk             int                           ,
@@ -142,7 +142,7 @@ create or replace table customer
     c_email_address           varchar(50)                      ,
     c_last_review_date_sk     int                       
 ) 
- CLUSTER BY(c_customer_sk);
+CLUSTER BY(c_customer_sk);
  
 create or replace table customer_address 
 (
@@ -160,8 +160,8 @@ create or replace table customer_address
     ca_gmt_offset             decimal(5,2)                  ,
     ca_location_type          varchar(20)                       
 ) 
+CLUSTER BY(ca_address_sk);
 
- CLUSTER BY(ca_address_sk);
 create or replace table customer_demographics 
 (
     cd_demo_sk                int                           ,
@@ -174,8 +174,8 @@ create or replace table customer_demographics
     cd_dep_employed_count     int                           ,
     cd_dep_college_count      int                            
 ) 
+CLUSTER BY(cd_demo_sk);
 
- CLUSTER BY(cd_demo_sk);
 create or replace table date_dim 
 (
     d_date_sk                 int                           ,
@@ -207,8 +207,8 @@ create or replace table date_dim
     d_current_quarter         varchar(1)                       ,
     d_current_year            varchar(1)                        
 ) 
+CLUSTER BY(d_date_sk);
 
- CLUSTER BY(d_date_sk);
 create or replace table household_demographics 
 (
     hd_demo_sk                int                           ,
@@ -217,16 +217,16 @@ create or replace table household_demographics
     hd_dep_count              int                           ,
     hd_vehicle_count          int                            
 ) 
+CLUSTER BY(hd_demo_sk);
 
- CLUSTER BY(hd_demo_sk);
 create or replace table income_band 
 (
     ib_income_band_sk         int                           ,
     ib_lower_bound            int                           ,
     ib_upper_bound            int                            
 ) 
+CLUSTER BY(ib_income_band_sk);
 
- CLUSTER BY(ib_income_band_sk);
 create or replace table inventory 
 (
     inv_date_sk               int                           ,
@@ -234,8 +234,8 @@ create or replace table inventory
     inv_warehouse_sk          int                           ,
     inv_quantity_on_hand      int                            
 ) 
+CLUSTER BY(inv_date_sk, inv_item_sk);
 
- CLUSTER BY(inv_date_sk, inv_item_sk);
 create or replace table item 
 (
     i_item_sk                 int                           ,
@@ -261,8 +261,8 @@ create or replace table item
     i_manager_id              int                           ,
     i_product_name            varchar(50)                       
 ) 
+CLUSTER BY(i_item_sk);
 
- CLUSTER BY(i_item_sk);
 create or replace table promotion 
 (
     p_promo_sk                int                           ,
@@ -285,16 +285,16 @@ create or replace table promotion
     p_purpose                 varchar(15)                      ,
     p_discount_active         varchar(1)                        
 ) 
+CLUSTER BY(p_promo_sk);
 
- CLUSTER BY(p_promo_sk);
 create or replace table reason 
 (
     r_reason_sk               int                           ,
     r_reason_id               varchar(16)                      ,
     r_reason_desc             varchar(100)                      
 ) 
+CLUSTER BY(r_reason_sk);
 
- CLUSTER BY(r_reason_sk);
 create or replace table ship_mode 
 (
     sm_ship_mode_sk           int                           ,
@@ -304,8 +304,8 @@ create or replace table ship_mode
     sm_carrier                varchar(20)                      ,
     sm_contract               varchar(20)                       
 ) 
+CLUSTER BY(sm_ship_mode_sk);
 
- CLUSTER BY(sm_ship_mode_sk);
 create or replace table store 
 (
     s_store_sk                int                           ,
@@ -338,8 +338,8 @@ create or replace table store
     s_gmt_offset              decimal(5,2)                  ,
     s_tax_precentage          decimal(5,2)                   
 ) 
+CLUSTER BY(s_store_sk);
 
- CLUSTER BY(s_store_sk);
 create or replace table store_returns 
 (
     sr_returned_date_sk       int                           ,
@@ -363,8 +363,8 @@ create or replace table store_returns
     sr_store_credit           decimal(7,2)                  ,
     sr_net_loss               decimal(7,2)                   
 ) 
+CLUSTER BY( sr_returned_date_sk, sr_item_sk );
 
- CLUSTER BY( sr_returned_date_sk, sr_item_sk );
 create or replace table store_sales 
 (
     ss_sold_date_sk           int                           ,
@@ -391,8 +391,8 @@ create or replace table store_sales
     ss_net_paid_inc_tax       decimal(7,2)                  ,
     ss_net_profit             decimal(7,2)                   
 ) 
+CLUSTER BY(ss_sold_date_sk, ss_item_sk );
 
- CLUSTER BY(ss_sold_date_sk, ss_item_sk );
 create or replace table time_dim 
 (
     t_time_sk                 int                           ,
@@ -406,8 +406,8 @@ create or replace table time_dim
     t_sub_shift               varchar(20)                      ,
     t_meal_time               varchar(20)                       
 ) 
-
- CLUSTER BY(t_time_sk);
+CLUSTER BY(t_time_sk);
+ 
 create or replace table warehouse 
 (
     w_warehouse_sk            int                           ,
@@ -425,8 +425,8 @@ create or replace table warehouse
     w_country                 varchar(20)                   ,
     w_gmt_offset              decimal(5,2)                   
 ) 
+CLUSTER BY(w_warehouse_sk);
 
- CLUSTER BY(w_warehouse_sk);
 create or replace table web_page 
 (
     wp_web_page_sk            int                           ,
@@ -444,8 +444,8 @@ create or replace table web_page
     wp_image_count            int                           ,
     wp_max_ad_count           int                            
 ) 
-
- CLUSTER BY(wp_web_page_sk);
+CLUSTER BY(wp_web_page_sk);
+ 
 create or replace table web_returns 
 (
     wr_returned_date_sk       int                           ,
@@ -473,8 +473,8 @@ create or replace table web_returns
     wr_account_credit         decimal(7,2)                  ,
     wr_net_loss               decimal(7,2)                   
 ) 
+CLUSTER BY(wr_returned_date_sk, wr_item_sk);
 
- CLUSTER BY(wr_returned_date_sk, wr_item_sk);
 create or replace table web_sales 
 (
     ws_sold_date_sk           int                           ,
@@ -512,8 +512,8 @@ create or replace table web_sales
     ws_net_paid_inc_ship_tax  decimal(7,2)                  ,
     ws_net_profit             decimal(7,2)                   
 ) 
-
- CLUSTER BY(ws_sold_date_sk, ws_item_sk );
+CLUSTER BY(ws_sold_date_sk, ws_item_sk );
+ 
 create or replace table web_site 
 (
     web_site_sk               int                           ,
@@ -543,5 +543,54 @@ create or replace table web_site
     web_gmt_offset            decimal(5,2)                  ,
     web_tax_percentage        decimal(5,2)                   
 ) 
+CLUSTER BY(web_site_sk);
 
- CLUSTER BY(web_site_sk);
+create or replace stage call_center_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/call_center/' file_format = CSV_1;
+create or replace stage catalog_page_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/catalog_page/' file_format = CSV_1;
+create or replace stage customer_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/customer/' file_format = CSV_1;
+create or replace stage customer_address_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/customer_address/' file_format = CSV_1;
+create or replace stage customer_demographics_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/customer_demographics/' file_format = CSV_1;
+create or replace stage date_dim_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/date_dim/' file_format = CSV_1;
+create or replace stage household_demographics_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/household_demographics/' file_format = CSV_1;
+create or replace stage income_band_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/income_band/' file_format = CSV_1;
+create or replace stage inventory_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/inventory/' file_format = CSV_1;
+create or replace stage item_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/item/' file_format = CSV_1;
+create or replace stage promotion_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/promotion/' file_format = CSV_1;
+create or replace stage reason_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/reason/' file_format = CSV_1;
+create or replace stage ship_mode_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/ship_mode/' file_format = CSV_1;
+create or replace stage store_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/store/' file_format = CSV_1;
+create or replace stage time_dim_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/time_dim/' file_format = CSV_1;
+create or replace stage warehouse_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/warehouse/' file_format = CSV_1;
+create or replace stage web_page_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/web_page/' file_format = CSV_1;
+create or replace stage web_site_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/web_site/' file_format = CSV_1;
+create or replace stage catalog_returns_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/catalog_returns/' file_format = CSV_1;
+create or replace stage catalog_sales_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/catalog_sales/' file_format = CSV_1;
+create or replace stage store_returns_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/store_returns/' file_format = CSV_1;
+create or replace stage store_sales_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/store_sales/' file_format = CSV_1;
+create or replace stage web_returns_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/web_returns/' file_format = CSV_1;
+create or replace stage web_sales_stage	storage_integration = s3_int url = '${LOCATION}/tpcds_100000_datafiles/web_sales/' file_format = CSV_1;
+
+copy into  call_center   from @call_center_stage file_format = (format_name = CSV_1);
+copy into  catalog_page   from @catalog_page_stage file_format = (format_name = CSV_1);
+copy into  catalog_returns   from @catalog_returns_stage file_format = (format_name = CSV_1);
+copy into  catalog_sales   from @catalog_sales_stage file_format = (format_name = CSV_1);
+copy into  customer  from @customer_stage file_format = (format_name = CSV_1);
+copy into  customer_address   from @customer_address_stage file_format = (format_name = CSV_1);
+copy into  customer_demographics   from @customer_demographics_stage file_format = (format_name = CSV_1);
+copy into  date_dim   from @date_dim_stage file_format = (format_name = CSV_1);
+copy into  household_demographics   from @household_demographics_stage file_format = (format_name = CSV_1);
+copy into  income_band   from @income_band_stage file_format = (format_name = CSV_1);
+copy into  inventory   from @inventory_stage file_format = (format_name = CSV_1);
+copy into  item   from @item_stage file_format = (format_name = CSV_1);
+copy into  promotion   from @promotion_stage file_format = (format_name = CSV_1);
+copy into  reason   from @reason_stage file_format = (format_name = CSV_1);
+copy into  ship_mode   from @ship_mode_stage file_format = (format_name = CSV_1);
+copy into  store   from @store_stage file_format = (format_name = CSV_1);
+copy into  store_returns   from @store_returns_stage file_format = (format_name = CSV_1);
+copy into  store_sales   from @store_sales_stage file_format = (format_name = CSV_1);
+copy into  time_dim   from @time_dim_stage file_format = (format_name = CSV_1);
+copy into  warehouse   from @warehouse_stage file_format = (format_name = CSV_1);
+copy into  web_page   from @web_page_stage file_format = (format_name = CSV_1);
+copy into  web_returns   from @web_returns_stage file_format = (format_name = CSV_1);
+copy into  web_sales   from @web_sales_stage file_format = (format_name = CSV_1);
+copy into  web_site   from @web_site_stage file_format = (format_name = CSV_1);
